@@ -16,7 +16,7 @@ public class LivroService {
         return buildLivro(livroId, livro);
     }
 
-    //TODO validacao categoria
+    //TODO validacao categoria e exceptions
     private Livro buildLivro(Long livroId, Livro livro) {
         return Livro.builder()
                 .id(livroId)
