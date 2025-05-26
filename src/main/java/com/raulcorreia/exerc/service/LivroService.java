@@ -2,7 +2,6 @@ package com.raulcorreia.exerc.service;
 
 import com.raulcorreia.exerc.dto.LivroCategoriaDTO;
 import com.raulcorreia.exerc.exception.NotFoundException;
-import com.raulcorreia.exerc.model.Categoria;
 import com.raulcorreia.exerc.model.Livro;
 import com.raulcorreia.exerc.repository.CategoriaRepository;
 import com.raulcorreia.exerc.repository.LivroRepository;
@@ -32,7 +31,7 @@ public class LivroService {
     public List<LivroCategoriaDTO> buscarPorCategoria(String categoriaNome) {
         return livroRepository.buscarPorCategoria(categoriaNome);
     }
-    
+
     private Livro buildLivro(Long livroId, Livro livro) {
         return Livro.builder()
                 .id(livroId)
