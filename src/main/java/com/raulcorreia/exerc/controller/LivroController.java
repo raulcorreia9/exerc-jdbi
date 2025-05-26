@@ -1,6 +1,7 @@
 package com.raulcorreia.exerc.controller;
 
 import com.raulcorreia.exerc.dto.LivroCategoriaDTO;
+import com.raulcorreia.exerc.exception.NotFoundException;
 import com.raulcorreia.exerc.model.Livro;
 import com.raulcorreia.exerc.service.LivroService;
 import lombok.RequiredArgsConstructor;
@@ -18,11 +19,11 @@ public class LivroController {
     private final LivroService livroService;
 
     @PostMapping
-    private ResponseEntity<Livro> inserirLivro(@RequestBody Livro livro) {
+    private ResponseEntity<?> inserirLivro(@RequestBody Livro livro) {
         try {
             return new ResponseEntity<>(livroService.inserirLivro(livro), HttpStatus.CREATED);
-        } catch (Exception e) {
-            throw new RuntimeException(e.getMessage());
+        } catch (NotFoundException e) {
+            return ResponseEntity.badRequest().body(e.getMessage());
         }
     }
 
